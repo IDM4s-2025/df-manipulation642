@@ -172,3 +172,4 @@ cython_debug/
 
 #file extencions
 *.csv
+testing.py
