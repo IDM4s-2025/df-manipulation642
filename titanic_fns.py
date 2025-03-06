@@ -23,3 +23,12 @@ def getPassengerId_byName(df:pd.DataFrame, name: str) -> int:
         int: Id of the passenger
     """
     return int(df[df.Name == name]["PassengerId"].iloc[0])
+
+def percentage_people_survived(series: pd.Series) -> float:
+    """
+    Args:
+        series (pd.Series): Series of booleans that survived
+    Returns:
+        float: % of people that survived
+    """
+    
