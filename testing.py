@@ -1,10 +1,23 @@
-import pandas as pd
+import numpy as np
+import time
 
-data = pd.read_csv("df-manipulation642/train.csv")
-ageid = data.index[data['Age'] >= 60].tolist()
-surviveid = data.index[data["Survived"] == 1].tolist()
-survived_60 = list(set(ageid) & set(surviveid))
+np.arange(10)
 
+start = time.time()
 
-for i in survived_60:
-    print(data.iloc[i])
+total = 0
+
+for i in np.arange(10000000):
+    total = i + total
+
+print(total)
+end = time.time()
+
+print(end-start)
+start = time.time()
+
+print(np.sum(np.arange(10000000)))
+
+end = time.time()
+
+print(end-start)
