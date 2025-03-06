@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def name_from_id(id:int,table:pd.DataFrame)->str:
     """Nombre del pasajero.
@@ -43,7 +44,20 @@ def porsentage_survived(table:pd.DataFrame,bool_list:pd.Series = pd.Series())->f
         bool_list(pandas.Series): Serie booleana de pandas que define que elementos son parte del subset y que elementos no.
     
     Return:
-        float: Porcentaje de sobrevivientes.
+        float: Porcentaje de sobrevivientes del subset.
 
     """
+    require_data = len(table.index)
+    if (len(bool_list.index) == 0):
+        bool_list = pd.Series(True,index=np.arange(require_data))
+    else:
+        if(len(bool_list.index) > require_data):
+            bool_list = bool_list[:require_data]
+        elif(len(bool_list.index) < require_data):
+            bool_list.reindex(range(require_data),fill_value=False)
+
+
     subset = table[bool_list.values]
+    survived = len(subset.index[subset['Survived'] == 1].tolist())
+    total = len(subset.index)
+    return survived/total
