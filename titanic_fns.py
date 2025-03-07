@@ -37,3 +37,7 @@ def pregunta_10(df_train):
     print(f"La suma total de mujeres y niños eran {len(df_Ma_S)+len(df_Ma_NS)}, de los cuales sobrevivieron {len(df_Ma_S)} y no sobrevivieron {len(df_Ma_NS)}")
     print(f"El porcentaje sería {round(len(df_Ma_S)/len(df_Ma_S+df_Ma_NS)*100,2)}%")
     print("Por lo que se puede intuir que las mujeres y niños tuvieron una mayor tasa de supervivencia que los hombres mayores de 15 años")
+def pregunta_11(df_train):
+    print(df_train.Age.mean())
+def pregunta_12(df_train):
+    print(df_train.Embarked.value_counts())
