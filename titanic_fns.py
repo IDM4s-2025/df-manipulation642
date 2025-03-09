@@ -12,8 +12,8 @@ def id_to_name(df: pd.DataFrame, id:int) -> str:
         str: El nombre del pasajero
     """
     name = df.loc[df.PassengerId == id, 'Name']
-    valor_n = str(name)
-    return valor_n
+    ans = name.iloc[0] # Para evitar errores de formato, como datos innecesarios al ser una serie de Pandas
+    return ans
 
 # 2. Create a function that returns the PassengerId of a passenger given their Name.
 def name_to_id(df: pd.DataFrame, name:str) -> int:
@@ -27,5 +27,5 @@ def name_to_id(df: pd.DataFrame, name:str) -> int:
         int: El ID del pasajero
     """
     id_pass = df.loc[df.Name == name, 'PassengerId']
-    valor_id = int(id_pass.iloc[0])
-    return valor_id
+    ans = id_pass.iloc[0]
+    return ans
