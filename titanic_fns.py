@@ -31,4 +31,4 @@ def percentage_people_survived(series: pd.Series) -> float:
     Returns:
         float: % of people that survived
     """
-    
+    return float((series.value_counts()[True]/series.count())*100)
