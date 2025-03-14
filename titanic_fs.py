@@ -1,11 +1,24 @@
-import pandas as pd
-titanic = pd.read_csv("data/train.csv")
-# Name given an Id
-def id_to_name(df: pd.DataFrame, id: int) -> str:
-  return df[df.PassengerId == id].Name.iloc[0]
+import pandas as pd 
 
-# Id given Name
-def name_to_id(df: pd.DataFrame, name: str) -> int:
-  return df[df.Name == name].PassengerId.iloc[0]
+def id_to_name(df:pd.DataFrame,id: int) -> str: #name of argument:pd.DataFrame
+    passenger_name = df[df.PassengerId == id].Name
+    return passenger_name[id-1]
 
-__all__ = ["titanic", "id_to_name", "name_to_id"]
+def name_to_id(df:pd.DataFrame,name: str)-> int:
+    passenger_id = df[df.Name == name].PassengerId
+    return passenger_id.iloc[0]
+
+def messages_id(df:pd.DataFrame, name: str)-> int:
+    passenger_id = df[df.Name == name].PassengerId
+    return print(f"The ID pf passenger of {name} is: {passenger_id.iloc[0]}")
+
+def messages_name(df:pd.DataFrame, id:int)-> str:
+    passenger_name = df[df.PassengerId == id].Name
+    return print(f"'The passenger with ID {id} is {passenger_name[id-1]}")
+
+def print_info(df:pd.DataFrame)->pd.DataFrame:
+    passenger_info = df[df.Age == df.Age.max()]
+    return print(passenger_info)
+
+def percentage_survivor(df:pd.DataFrame, subset:str):
+    return f'{df[df[subset]==1].shape[0] / df.shape[0] * 100} %'
