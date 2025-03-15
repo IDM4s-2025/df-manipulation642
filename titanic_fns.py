@@ -29,3 +29,15 @@ def name_to_id(df: pd.DataFrame, name:str) -> int:
     id_pass = df.loc[df.Name == name, 'PassengerId']
     ans = id_pass.iloc[0]
     return ans
+
+# 11. Write a function that returns the percentage of people that survived from a subset given as a boolean Pandas series.
+
+def perc_survived(subset: pd.Series) -> float:
+    """
+    Input: Subset given as a boolean Pandas series (True == survived)
+    Output: Percentage of people who survived.
+    """
+    total_survivors = subset.sum()  # Sum of True in subset == # of survivors
+    total_people = len(subset)
+    per_s = (total_survivors / total_people) * 100
+    return per_s
