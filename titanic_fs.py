@@ -1,17 +1,26 @@
 import pandas as pd
 
-def name_to_ID(Name: str, df:pd.DataFrame) -> int:
-    """Funcion que cabia el nombre del pasajero por su ID. 
+#1
+def id_to_name(df:pd.DataFrame,id: int) -> str:
+    passenger_name = df[df.PassengerId == id].Name
+    return passenger_name[id-1]
 
-    Args:
-        Name (str): Nombre del Pasajero
-        df (pd.DataFrame): Data Frame
+#2
+def name_to_id(df:pd.DataFrame,name: str)-> int:
+    passenger_id = df[df.Name == name].PassengerId
+    return passenger_id.iloc[0]
 
-    Returns:
-        int: Id del pasajero
-    """
-    Id = df[df.Name == Name]. PassengerId
+#3
+def print_passenger_id(df: pd.DataFrame, name: str) -> int:
+  passenger_id = name_to_id(df, name)
+  return print(f'The ID of passenger {name} is {passenger_id}')
 
-    return Id
+#4
+def Id_to_name(df: pd.DataFrame, id:int)->str:
+    passenger_name=df[df.PassengerId == id].Name
+    return print(f'The passenger  with {id} ID is {passenger_name[id-1]}')
 
-name_to_ID('Braund, Mr. Owen Harris', titanic)
+#5
+def info_old(df:pd.DataFrame)->pd.DataFrame:
+    passenger_info = df[df.Age == df.Age.max()]
+    return print(passenger_info)
